@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprawdź swoje hasło</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+</head>
+<body>
+    <div id="glowny-kontener">
+        <h1>Sprawdź swoje hasło</h1>
+        <form>
+            <div class="input-kontener">
+                <input type="password" id="haslo-input" placeholder="Wpisz swoje hasło...">
+                <span id="pokaz-haslo" class="material-symbols-outlined">visibility</span>
+            </div>
+        </form>
+        <div id="pasek-postepu"></div>
+        <p id="tekst-sila-hasla">Zacznij wpisywać hasło...</p>
+        <h3>Hasło musi:</h3>
+        <ul>
+            <li id="wymog-1">Posiadać minimum 8 znaków</li>
+            <li id="wymog-2">Zawierać przynajmniej jedną dużą literę</li>
+            <li id="wymog-3">Zawierać przynajmniej jedną małą literę</li>
+            <li id="wymog-4">Zawierać przynajmniej jedną cyfrę</li>
+            <li id="wymog-5">Zawierać przynajmniej jeden znak specjalny</li>
+        </ul>
+        <h3>Sprawdź czy twoje hasło wyciekło:</h3>
+        <button id="przycisk-wycieku"> Sprawdź</button>
+        <span id="wynik-wycieku"></span>
+    </div>
+<footer>
+<p>Wiktoria Fizia | <a href="https://github.com/tragicznysejv?tab=repositories" target="_blank">Sprawdź mój GitHub</a></p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
