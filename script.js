@@ -142,3 +142,9 @@ przyciskWycieku.addEventListener('click', async function(){
             wynikWycieku.style.color = "pink"
         }
 });
+
+const checkbox = document.getElementById('checkbox');
+
+checkbox.addEventListener('change', function(){
+    document.body.classList.toggle('light-mode');
+})
