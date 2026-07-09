@@ -147,4 +147,34 @@ const checkbox = document.getElementById('checkbox');
 
 checkbox.addEventListener('change', function(){
     document.body.classList.toggle('light-mode');
-})
+});
+
+const przyciskDoGenerowaniaHasla = document.getElementById('wygeneruj-haslo');
+
+function generujZnaki(start,koniec){
+    const znaki = [];
+    for(let i = start; i <= koniec; i++){
+        znaki.push(String.fromCharCode(i));
+    }
+    return znaki;
+}
+
+const maleLitery = generujZnaki(97,122);
+const duzeLitery = generujZnaki(65,90);
+const cyfry = generujZnaki(48,57);
+const znakiSpecjalne = generujZnaki(33,47);
+
+const caloscZnakow = maleLitery.concat(duzeLitery, cyfry, znakiSpecjalne);
+
+przyciskDoGenerowaniaHasla.addEventListener('click', function(){
+    let wygenerowaneHaslo = "";
+    const dlugoscHasla = 16;
+
+    for(let i = 0; i < dlugoscHasla; ++i){
+        const indeks = Math.floor(Math.random()*caloscZnakow.length);
+        wygenerowaneHaslo += caloscZnakow[indeks];
+    }
+    hasloInput.value = wygenerowaneHaslo;
+
+    hasloInput.dispatchEvent(new Event('input'));
+});

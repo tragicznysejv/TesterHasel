@@ -145,6 +145,15 @@ footer a:hover{
     background-color: #848383;
 }
 
+body.light-mode #przycisk-wycieku{
+    background-color: #848383;
+    color: #ffffff;
+}
+
+body.light-mode #przycisk-wycieku:hover{
+    background-color: #272424;
+}
+
 .gorny-bar{
     position: absolute;
     top: 20px;
@@ -194,4 +203,29 @@ input:checked + .slider {
 
 input:checked + .slider::before {
     transform: translateX(18px);
+}
+
+#wygeneruj-haslo{
+    margin-top: 15px;
+    padding:10px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#wygeneruj-haslo:hover{
+    background-color: #848383;
+}
+
+body.light-mode #wygeneruj-haslo{
+    background-color: #848383;
+    color: #ffffff;
+}
+
+body.light-mode #wygeneruj-haslo:hover{
+    background-color: #272424;
 }
