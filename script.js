@@ -54,22 +54,27 @@ hasloInput.addEventListener('input',function(){
 
     if(aktualneHaslo.length === 0){
         pasekPostepu.style.width = '0%';
-        tekstSilaHasla.innerText = 'Zacznij wpisywac hasło...';
+        tekstSilaHasla.innerText = slownik[aktualnyJezyk].silaPoczatek;
+        tekstSilaHasla.setAttribute('data-i18n','silaPoczatek');
         tekstSilaHasla.style.color = '#848383';
     } else if(licznikSpelnionychWarunkow <= 2){
         pasekPostepu.style.backgroundColor = '#d70909';
-        tekstSilaHasla.innerText = 'Słabe haslo';
+        tekstSilaHasla.innerText = slownik[aktualnyJezyk].silaSlabe;
+        tekstSilaHasla.setAttribute('data-i18n','silaSlabe');
         tekstSilaHasla.style.color = '#d70909';
     } else if(licznikSpelnionychWarunkow < 4){
-        tekstSilaHasla.innerText = 'Średnie haslo';
+        tekstSilaHasla.innerText = slownik[aktualnyJezyk].silaSrednie;
+        tekstSilaHasla.setAttribute('data-i18n','silaSrednie');
         pasekPostepu.style.backgroundColor = '#df5a13';
         tekstSilaHasla.style.color = '#df5a13';
     } else if(licznikSpelnionychWarunkow < 5){
-        tekstSilaHasla.innerText = 'Dobre hasło';
+        tekstSilaHasla.innerText = slownik[aktualnyJezyk].silaDobre;
+        tekstSilaHasla.setAttribute('data-i18n','silaDobre');
         pasekPostepu.style.backgroundColor = '#e8e833';
         tekstSilaHasla.style.color = '#e8e833';
     } else {
-        tekstSilaHasla.innerText = 'Bardzo mocne hasło';
+        tekstSilaHasla.innerText = slownik[aktualnyJezyk].silaMocne;
+        tekstSilaHasla.setAttribute('data-i18n','silaMocne');
         pasekPostepu.style.backgroundColor = 'lime';
         tekstSilaHasla.style.color = 'lime';
     }
@@ -131,14 +136,17 @@ przyciskWycieku.addEventListener('click', async function(){
         const czyBylWyciek = await sprawdzWyciek(wygenerowanyHash);
 
         if(czyBylWyciek === true){
-            wynikWycieku.innerText = "Hasło wyciekło!";
+            wynikWycieku.innerText = slownik[aktualnyJezyk].wyciekZle;
+            wynikWycieku.setAttribute('data-i18n','wyciekZle');
             wynikWycieku.style.color = '#d70909';
         } else {
-            wynikWycieku.innerText = "Hasło jest bezpieczne.";
+            wynikWycieku.innerText = slownik[aktualnyJezyk].wyciekDobre;
+            wynikWycieku.setAttribute('data-i18n','wyciekDobre');
             wynikWycieku.style.color = 'lime';
         } 
     } else {
-            wynikWycieku.innerText = "Wpisz hasło";
+            wynikWycieku.innerText = slownik[aktualnyJezyk].wyciekPuste;
+            wynikWycieku.setAttribute('data-i18n','wyciekPuste');
             wynikWycieku.style.color = "pink"
         }
 });
@@ -178,3 +186,84 @@ przyciskDoGenerowaniaHasla.addEventListener('click', function(){
 
     hasloInput.dispatchEvent(new Event('input'));
 });
+
+
+const slownik ={
+    pl:{
+        tytul:"Sprawdź swoje hasło",
+        EN: "EN",
+        tytulStrony: "Sprawdź swoje hasło",
+        wpisywanieHasla:"Wpisz swoje hasło...",
+        wygenerujHaslo: "Wygeneruj hasło",
+        zacznijWpisywacHaslo: "Zacznij wpisywać hasło...",
+        hasloMusi: "Hasło musi:",
+        posiadac8Znakow: "Posiadać minimum 8 znaków",
+        zawieracDuzaLitera: "Zawierać przynajmniej jedną dużą literę",
+        zawieracMalaLitera: "Zawierać przynajmniej jedną dużą literę",
+        zawieracLiczbe: "Zawierać przynajmniej jedną cyfrę",
+        zawieracZnakSpecjalny: "Zawierać przynajmniej jeden znak specjalny",
+        sprawdzCzyHaslo: "Sprawdź czy twoje hasło wyciekło:",
+        sprawdz: "Sprawdź",
+        linkGithub: "Sprawdź mój Github",
+
+        silaPoczatek: "Zacznij wpisywać hasło...",
+        silaSlabe: "Słabe hasło",
+        silaSrednie: "Średnie hasło",
+        silaDobre:"Dobre hasło",
+        silaMocne: "Bardzo mocne hasło",
+
+        wyciekZle:"Hasło wyciekło!",
+        wyciekDobre:"Hasło jest bezpieczne",
+        wyciekPuste:"Wpisz hasło"
+
+    },
+    en:{
+        tytul:"Check your password",
+        EN: "PL",
+        tytulStrony:"Check your password",
+        wpisywanieHasla: "Enter your password...",
+        wygenerujHaslo:"Generate your password",
+        zacznijWpisywacHaslo:"Start entering your password...",
+        hasloMusi: "Password must:",
+        posiadac8Znakow: "Containt at least 8 characters",
+        zawieracDuzaLitera: "Containt at least one uppercase letter",
+        zawieracMalaLitera:"Containt at least one lowercase letter",
+        zawieracLiczbe:"Containt at least one number",
+        zawieracZnakSpecjalny:"Containt at least one special character",
+        sprawdzCzyHaslo:"Check for data breaches:",
+        sprawdz:"Check",
+        linkGithub:"Check my GitHub",
+
+        silaPoczatek:"Start typing your password...",
+        silaSlabe:"Weak password",
+        silaSrednie:"Medium password",
+        silaDobre:"Good password",
+        silaMocne:"Very strong password",
+
+        wyciekZle:"Password breached!",
+        wyciekDobre:"Password is safe",
+        wyciekPuste:"Enter your password"
+
+    }
+};
+
+let aktualnyJezyk = "pl";
+const przyciskJezyka = document.getElementById('jezyk-przycisk');
+
+przyciskJezyka.addEventListener('click', function(){
+    aktualnyJezyk = aktualnyJezyk === "pl" ? "en" : "pl";
+
+    przyciskJezyka.innerText = aktualnyJezyk == "pl" ? "EN" : "PL";
+
+    const rzeczyDoTlumaczenia = document.querySelectorAll('[data-i18n]');
+    rzeczyDoTlumaczenia.forEach(element => {
+        const klucz = element.getAttribute('data-i18n');
+        element.innerText = slownik[aktualnyJezyk][klucz];
+    });
+
+    const przechowywanieDoTlumaczenia = document.querySelectorAll('[data-i18n-placeholder]');
+    przechowywanieDoTlumaczenia.forEach(element => {
+        const klucz = element.getAttribute('data-i18n-placeholder');
+        element.setAttribute('placeholder', slownik[aktualnyJezyk][klucz]);
+    });
+})

@@ -229,3 +229,16 @@ body.light-mode #wygeneruj-haslo{
 body.light-mode #wygeneruj-haslo:hover{
     background-color: #272424;
 }
+
+#jezyk-przycisk{
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#jezyk-przycisk:hover{
+    background-color: #848383;
+}
