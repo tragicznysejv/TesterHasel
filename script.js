@@ -6,7 +6,85 @@ const duzaLitera = document.getElementById('wymog-2');
 const malaLitera = document.getElementById('wymog-3');
 const zawieraCyfre = document.getElementById('wymog-4');
 const specjalnyZnak = document.getElementById('wymog-5');
+const slownik ={
+    pl:{
+        tytul:"Sprawdź swoje hasło",
+        EN: "EN",
+        tytulStrony: "Sprawdź swoje hasło",
+        wpisywanieHasla:"Wpisz swoje hasło...",
+        wygenerujHaslo: "Wygeneruj hasło",
+        zacznijWpisywacHaslo: "Zacznij wpisywać hasło...",
+        hasloMusi: "Hasło musi:",
+        posiadac8Znakow: "Posiadać minimum 8 znaków",
+        zawieracDuzaLitera: "Zawierać przynajmniej jedną dużą literę",
+        zawieracMalaLitera: "Zawierać przynajmniej jedną dużą literę",
+        zawieracLiczbe: "Zawierać przynajmniej jedną cyfrę",
+        zawieracZnakSpecjalny: "Zawierać przynajmniej jeden znak specjalny",
+        sprawdzCzyHaslo: "Sprawdź czy twoje hasło wyciekło:",
+        sprawdz: "Sprawdź",
+        linkGithub: "Sprawdź mój Github",
 
+        silaPoczatek: "Zacznij wpisywać hasło...",
+        silaSlabe: "Słabe hasło",
+        silaSrednie: "Średnie hasło",
+        silaDobre:"Dobre hasło",
+        silaMocne: "Bardzo mocne hasło",
+
+        wyciekZle:"Hasło wyciekło!",
+        wyciekDobre:"Hasło jest bezpieczne",
+        wyciekPuste:"Wpisz hasło"
+
+    },
+    en:{
+        tytul:"Check your password",
+        EN: "PL",
+        tytulStrony:"Check your password",
+        wpisywanieHasla: "Enter your password...",
+        wygenerujHaslo:"Generate your password",
+        zacznijWpisywacHaslo:"Start entering your password...",
+        hasloMusi: "Password must:",
+        posiadac8Znakow: "Containt at least 8 characters",
+        zawieracDuzaLitera: "Containt at least one uppercase letter",
+        zawieracMalaLitera:"Containt at least one lowercase letter",
+        zawieracLiczbe:"Containt at least one number",
+        zawieracZnakSpecjalny:"Containt at least one special character",
+        sprawdzCzyHaslo:"Check for data breaches:",
+        sprawdz:"Check",
+        linkGithub:"Check my GitHub",
+
+        silaPoczatek:"Start typing your password...",
+        silaSlabe:"Weak password",
+        silaSrednie:"Medium password",
+        silaDobre:"Good password",
+        silaMocne:"Very strong password",
+
+        wyciekZle:"Password breached!",
+        wyciekDobre:"Password is safe",
+        wyciekPuste:"Enter your password"
+
+    }
+};
+
+let aktualnyJezyk = "pl";
+const przyciskJezyka = document.getElementById('jezyk-przycisk');
+
+przyciskJezyka.addEventListener('click', function(){
+    aktualnyJezyk = aktualnyJezyk === "pl" ? "en" : "pl";
+
+    przyciskJezyka.innerText = aktualnyJezyk == "pl" ? "EN" : "PL";
+
+    const rzeczyDoTlumaczenia = document.querySelectorAll('[data-i18n]');
+    rzeczyDoTlumaczenia.forEach(element => {
+        const klucz = element.getAttribute('data-i18n');
+        element.innerText = slownik[aktualnyJezyk][klucz];
+    });
+
+    const przechowywanieDoTlumaczenia = document.querySelectorAll('[data-i18n-placeholder]');
+    przechowywanieDoTlumaczenia.forEach(element => {
+        const klucz = element.getAttribute('data-i18n-placeholder');
+        element.setAttribute('placeholder', slownik[aktualnyJezyk][klucz]);
+    });
+});
 
 hasloInput.addEventListener('input',function(){
 
@@ -187,83 +265,3 @@ przyciskDoGenerowaniaHasla.addEventListener('click', function(){
     hasloInput.dispatchEvent(new Event('input'));
 });
 
-
-const slownik ={
-    pl:{
-        tytul:"Sprawdź swoje hasło",
-        EN: "EN",
-        tytulStrony: "Sprawdź swoje hasło",
-        wpisywanieHasla:"Wpisz swoje hasło...",
-        wygenerujHaslo: "Wygeneruj hasło",
-        zacznijWpisywacHaslo: "Zacznij wpisywać hasło...",
-        hasloMusi: "Hasło musi:",
-        posiadac8Znakow: "Posiadać minimum 8 znaków",
-        zawieracDuzaLitera: "Zawierać przynajmniej jedną dużą literę",
-        zawieracMalaLitera: "Zawierać przynajmniej jedną dużą literę",
-        zawieracLiczbe: "Zawierać przynajmniej jedną cyfrę",
-        zawieracZnakSpecjalny: "Zawierać przynajmniej jeden znak specjalny",
-        sprawdzCzyHaslo: "Sprawdź czy twoje hasło wyciekło:",
-        sprawdz: "Sprawdź",
-        linkGithub: "Sprawdź mój Github",
-
-        silaPoczatek: "Zacznij wpisywać hasło...",
-        silaSlabe: "Słabe hasło",
-        silaSrednie: "Średnie hasło",
-        silaDobre:"Dobre hasło",
-        silaMocne: "Bardzo mocne hasło",
-
-        wyciekZle:"Hasło wyciekło!",
-        wyciekDobre:"Hasło jest bezpieczne",
-        wyciekPuste:"Wpisz hasło"
-
-    },
-    en:{
-        tytul:"Check your password",
-        EN: "PL",
-        tytulStrony:"Check your password",
-        wpisywanieHasla: "Enter your password...",
-        wygenerujHaslo:"Generate your password",
-        zacznijWpisywacHaslo:"Start entering your password...",
-        hasloMusi: "Password must:",
-        posiadac8Znakow: "Containt at least 8 characters",
-        zawieracDuzaLitera: "Containt at least one uppercase letter",
-        zawieracMalaLitera:"Containt at least one lowercase letter",
-        zawieracLiczbe:"Containt at least one number",
-        zawieracZnakSpecjalny:"Containt at least one special character",
-        sprawdzCzyHaslo:"Check for data breaches:",
-        sprawdz:"Check",
-        linkGithub:"Check my GitHub",
-
-        silaPoczatek:"Start typing your password...",
-        silaSlabe:"Weak password",
-        silaSrednie:"Medium password",
-        silaDobre:"Good password",
-        silaMocne:"Very strong password",
-
-        wyciekZle:"Password breached!",
-        wyciekDobre:"Password is safe",
-        wyciekPuste:"Enter your password"
-
-    }
-};
-
-let aktualnyJezyk = "pl";
-const przyciskJezyka = document.getElementById('jezyk-przycisk');
-
-przyciskJezyka.addEventListener('click', function(){
-    aktualnyJezyk = aktualnyJezyk === "pl" ? "en" : "pl";
-
-    przyciskJezyka.innerText = aktualnyJezyk == "pl" ? "EN" : "PL";
-
-    const rzeczyDoTlumaczenia = document.querySelectorAll('[data-i18n]');
-    rzeczyDoTlumaczenia.forEach(element => {
-        const klucz = element.getAttribute('data-i18n');
-        element.innerText = slownik[aktualnyJezyk][klucz];
-    });
-
-    const przechowywanieDoTlumaczenia = document.querySelectorAll('[data-i18n-placeholder]');
-    przechowywanieDoTlumaczenia.forEach(element => {
-        const klucz = element.getAttribute('data-i18n-placeholder');
-        element.setAttribute('placeholder', slownik[aktualnyJezyk][klucz]);
-    });
-})
