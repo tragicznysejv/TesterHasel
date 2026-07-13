@@ -242,3 +242,39 @@ body.light-mode #wygeneruj-haslo:hover{
 #jezyk-przycisk:hover{
     background-color: #848383;
 }
+
+@media (max-width: 600px){
+
+    #glowny-kontener{
+        width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    h1{
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    input[type="password"],
+    input[type="text"]{
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #wygeneruj-haslo,
+    #przycisk-wycieku{
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    ul{
+        padding-left: 20px;
+        font-size: 0.9rem;
+    }
+    .gorny-bar{
+        padding: 10px 15px;
+    }
+}
